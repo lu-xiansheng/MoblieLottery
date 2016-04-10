@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun com.lz.moblielottery.test.TestXml.getxml " project="MoblieLottery" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="genymotion-google_nexus_s___4_1_1___api_16___480x800-192.168.185.102:5555" time="0.534">
+    <testsuite name="com.lz.moblielottery.test.TestXml" time="0.534">
+      <testcase name="getxml " classname="com.lz.moblielottery.test.TestXml" time="0.534"/>
+    </testsuite>
+  </testsuite>
+</testrun>
