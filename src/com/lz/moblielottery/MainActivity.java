@@ -44,18 +44,17 @@ public class MainActivity extends Activity {
 		//方式一：直接new （）
 		//方式二：单例  
 		init();  
-	}
+	}  
 	
 	private void init() {  
 		middleContainer = (RelativeLayout)findViewById(R.id.ii_main_middle);
 		UIManager.getInstance().setMiddleContainer(middleContainer);
 		
+		UIManager.getInstance().addObserver(TopManager.getinstance());
+		UIManager.getInstance().addObserver(BottomManager.getInstrance());
 		
 		BottomManager.getInstrance().init(this);
 		TopManager.getinstance().init(this);
-		
-		UIManager.getInstance().addObserver(TopManager.getinstance());
-		UIManager.getInstance().addObserver(BottomManager.getInstrance());
 		
 		TopManager.getinstance().showCommonTitle();
 		

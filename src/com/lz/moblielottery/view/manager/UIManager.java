@@ -156,6 +156,4 @@ public class UIManager extends Observable{
 		setChanged();
 		notifyObservers(id);
 	}
-	
-	
 }

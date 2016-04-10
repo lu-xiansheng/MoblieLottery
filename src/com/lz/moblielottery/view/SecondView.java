@@ -24,7 +24,7 @@ public class SecondView extends BaseView{
 		init();
 	}
 	
-	private void init() {
+	private void init() { 
 		//ºÚµ•ΩÁ√Ê£∫
 		textView = new TextView(context);
 

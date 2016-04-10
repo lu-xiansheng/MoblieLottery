@@ -28,7 +28,7 @@ public class FirstView  extends BaseView{
 	
 	private void init() {
 		//ºÚµ•ΩÁ√Ê£∫
-		textView = new TextView(context);   
+		textView = new TextView(context);
 
 		LayoutParams layoutParams = textView.getLayoutParams();
 		layoutParams = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
@@ -45,7 +45,7 @@ public class FirstView  extends BaseView{
 		return textView;
 
 	}
-
+  
 
 	/* (non-Javadoc)
 	 * @see com.lz.moblielottery.view.BaseView#getId()

@@ -152,7 +152,6 @@ public class TopManager implements Observer{
 	}
 	/* (non-Javadoc)
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
-	 * 依据中间容器传递过来的信息进行顶部容器切换
 	 */
 	@Override
 	public void update(Observable observable, Object data) {

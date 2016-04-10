@@ -151,15 +151,14 @@ public class BottomManager implements Observer{
 
 	@Override
 	public void update(Observable observable, Object data) {
-		if(data!=null&&StringUtils.isNumeric(data.toString()))
-		{
+		if(data!=null&&StringUtils.isNumeric(data.toString())){
 			int id=Integer.parseInt(data.toString());
 			switch (id) {
 				case ConstantValue.VIEW_FIRST:
 					showCommonBottom();
 					break;
 				case ConstantValue.VIEW_SECOND:
-					showGameBottom();
+					showGameBottom(); 
 					break;
 				default:
 					break;
