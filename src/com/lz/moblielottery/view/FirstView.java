@@ -28,7 +28,7 @@ public class FirstView  extends BaseView{
 	
 	private void init() {
 		//ºÚµ•ΩÁ√Ê£∫
-		textView = new TextView(context);
+		textView = new TextView(context);   
 
 		LayoutParams layoutParams = textView.getLayoutParams();
 		layoutParams = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);

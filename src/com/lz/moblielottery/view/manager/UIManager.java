@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Observable;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -26,7 +27,7 @@ import android.widget.RelativeLayout;
  * @author L.Z.
  *
  */
-public class UIManager {
+public class UIManager extends Observable{
 
 	private static final String TAG = "view";
 
@@ -152,18 +153,8 @@ public class UIManager {
 	private void changeTitleAndBottom(int id) {
 		//根据中间容器的变换，去切换底部和顶部容器
 		//根据中间容器里正在显示的界面
-		switch (id) {
-		case ConstantValue.VIEW_FIRST:
-			TopManager.getinstance().showUnLoginTitle();
-			BottomManager.getInstrance().showCommonBottom();
-			break;
-			
-		case ConstantValue.VIEW_SECOND:
-			TopManager.getinstance().showCommonTitle();
-			BottomManager.getInstrance().showGameBottom();
-			break;
-		
-		}
+		setChanged();
+		notifyObservers(id);
 	}
 	
 	

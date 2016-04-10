@@ -50,8 +50,13 @@ public class MainActivity extends Activity {
 		middleContainer = (RelativeLayout)findViewById(R.id.ii_main_middle);
 		UIManager.getInstance().setMiddleContainer(middleContainer);
 		
+		
 		BottomManager.getInstrance().init(this);
 		TopManager.getinstance().init(this);
+		
+		UIManager.getInstance().addObserver(TopManager.getinstance());
+		UIManager.getInstance().addObserver(BottomManager.getInstrance());
+		
 		TopManager.getinstance().showCommonTitle();
 		
 		/*FirstView child = new FirstView(this);

@@ -1,6 +1,12 @@
 package com.lz.moblielottery.view.manager;
 
 
+import java.util.Observable;
+import java.util.Observer;
+
+import org.apache.commons.lang3.StringUtils;
+
+import com.lz.moblielottery.ConstantValue;
 import com.lz.moblielottery.MainActivity;
 import com.lz.moblielottery.R;
 import com.lz.moblielottery.view.FirstView;
@@ -20,7 +26,7 @@ import android.widget.TextView;
 /*
  * 管理顶部标题（容器）
  * */
-public class TopManager {  
+public class TopManager implements Observer{  
 	
 	//完成了TopManager的单例
 	/*1、单例类只能有一个实例。
@@ -143,5 +149,24 @@ public class TopManager {
 	
 	public void setTopTitle(String title) {
 		topTitle.setText(title);
+	}
+	/* (non-Javadoc)
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+	 * 依据中间容器传递过来的信息进行顶部容器切换
+	 */
+	@Override
+	public void update(Observable observable, Object data) {
+		if(data!=null && StringUtils.isNumeric(data.toString())) {
+			int id = Integer.parseInt(data.toString());
+			switch (id) {
+			case ConstantValue.VIEW_FIRST:
+				showUnLoginTitle();
+				break;
+				
+			case ConstantValue.VIEW_SECOND:
+				showCommonTitle();
+				break; 
+			}
+		}
 	}
 }

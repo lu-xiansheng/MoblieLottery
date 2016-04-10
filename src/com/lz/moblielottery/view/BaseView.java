@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.View;
 
 
+public abstract class BaseView {
+	protected Context context;
 	
 	public BaseView(Context context) {
 		super();
@@ -11,12 +13,12 @@ import android.view.View;
 	}
 	
 	/*
-	 * ï¿½ï¿½È¡ï¿½ï¿½Ç°Viewï¿½ï¿½ï¿½ï¿½
+	 * ³éÈ¡µ±Ç°View·½·¨
 	 * */
 	public abstract View getView();
 	
 	/*
-	 * ï¿½Ãµï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¨Ò»ï¿½ï¿½Ê¶
+	 * ÄÃµ½µ±Ç°ÈÝÆ÷µÄÎ¨Ò»±êÊ¶
 	 * */
 	public abstract int getId();
 	
