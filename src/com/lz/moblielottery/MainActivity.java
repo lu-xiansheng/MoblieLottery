@@ -8,6 +8,7 @@ import org.xmlpull.v1.XmlSerializer;
 import com.lz.moblielottery.view.FirstView;
 import com.lz.moblielottery.view.SecondView;
 import com.lz.moblielottery.view.manager.BottomManager;
+import com.lz.moblielottery.view.manager.PromotManager;
 import com.lz.moblielottery.view.manager.TopManager;
 import com.lz.moblielottery.view.manager.UIManager;
 
@@ -72,8 +73,9 @@ public class MainActivity extends Activity {
 			boolean changeCache = UIManager.getInstance().changeCache();
 			if(changeCache == false) {
 				//退出应用
-				
-			}else {
+				//提示用户是否退出应用（AlertDialog）
+				PromotManager.showExitDialog(this, "你确定要离我而去吗？0=0");
+ 		}else {
 				return true;
 			}
 		}
