@@ -5,6 +5,7 @@ import java.io.StringWriter;
 
 import org.xmlpull.v1.XmlSerializer;
 
+import com.lz.moblielottery.utill.NetUtil;
 import com.lz.moblielottery.view.FirstView;
 import com.lz.moblielottery.view.SecondView;
 import com.lz.moblielottery.view.manager.BottomManager;
@@ -63,6 +64,9 @@ public class MainActivity extends Activity {
 		middleContainer.addView(child.getView());*/
 		UIManager.getInstance().changeView(FirstView.class);
 		
+		if(!NetUtil.checkNet(this)) {
+			PromotManager.showNoNetWork(this);
+		}
 		/*handler.sendEmptyMessageDelayed(0,2000); */ 
 	}
 
