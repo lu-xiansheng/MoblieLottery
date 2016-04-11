@@ -78,7 +78,7 @@ public class PromotManager {
 					public void onClick(DialogInterface dialog, int whichButton) {
 						// 跳转到系统的网络设置界面
 						Intent intent=new Intent();
-						intent.setClassName("com.android.settings", "com.android.settings.WirelessSettings");
+						intent.setAction(android.provider.Settings.ACTION_WIRELESS_SETTINGS);
 						context.startActivity(intent);
 					}
 				})//
