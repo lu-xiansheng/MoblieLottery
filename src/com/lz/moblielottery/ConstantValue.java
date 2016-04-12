@@ -14,6 +14,10 @@ public interface ConstantValue {
 	 * 第三个界面
 	 * */
 	int VIEW_THIED = 2;
+	/*
+	 * 购彩大厅界面
+	 * */
+	int VIew_HALL = 10;
 	
 	String AGENTERID="1000002";//代理商的标识
 	String SOURCE="ivr";//xml文件的来源

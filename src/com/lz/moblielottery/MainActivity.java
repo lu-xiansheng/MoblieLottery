@@ -6,7 +6,9 @@ import java.io.StringWriter;
 import org.xmlpull.v1.XmlSerializer;
 
 import com.lz.moblielottery.utill.NetUtil;
+import com.lz.moblielottery.view.BaseView;
 import com.lz.moblielottery.view.FirstView;
+import com.lz.moblielottery.view.Hall;
 import com.lz.moblielottery.view.SecondView;
 import com.lz.moblielottery.view.manager.BottomManager;
 import com.lz.moblielottery.view.manager.PromotManager;
@@ -14,6 +16,7 @@ import com.lz.moblielottery.view.manager.TopManager;
 import com.lz.moblielottery.view.manager.UIManager;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -25,18 +28,28 @@ import android.widget.RelativeLayout;
 
 public class MainActivity extends Activity {
 	
-	private RelativeLayout middleContainer;
-	
-	/*private Handler handler = new Handler() {
+	protected static final int value = 0;
 
-		
+	private RelativeLayout middleContainer;//中间容器
+	
+	private ProgressDialog progressDialog;//通用的进度条
+
+
+	
+	private Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
-//			UIManager.getInstance().changeView(new SecondView(MainActivity.this));
-//			changeview();
+			switch (msg.what) {
+			case value://显示一个进度条
+				PromotManager.showProgressDialog(progressDialog, "获取服务器信息....");
+				break;
+
+			default:
+				break;
+			} 
 			super.handleMessage(msg);
 		}
 		
-	};*/
+	};
 	
 	
 	public void onCreate(Bundle savedInstanceState) {
@@ -62,11 +75,13 @@ public class MainActivity extends Activity {
 		
 		/*FirstView child = new FirstView(this);
 		middleContainer.addView(child.getView());*/
-		UIManager.getInstance().changeView(FirstView.class);
+		UIManager.getInstance().changeView(Hall.class);
 		
-		if(!NetUtil.checkNet(this)) {
+		/*if(!NetUtil.checkNet(this)) {
 			PromotManager.showNoNetWork(this);
-		}
+		}*/
+		
+		BaseView.setMyHandler(handler);
 		/*handler.sendEmptyMessageDelayed(0,2000); */ 
 	}
 

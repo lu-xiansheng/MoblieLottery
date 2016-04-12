@@ -154,6 +154,7 @@ public class BottomManager implements Observer{
 		if(data!=null&&StringUtils.isNumeric(data.toString())){
 			int id=Integer.parseInt(data.toString());
 			switch (id) {
+				case ConstantValue.VIew_HALL: 
 				case ConstantValue.VIEW_FIRST:
 					showCommonBottom();
 					break;
