@@ -22,11 +22,11 @@ public class FirstView  extends BaseView{
 	
 	public FirstView(Context context) {
 		super(context);
-		init();
+		//init();
 	}
 
 	
-	private void init() {
+	protected void init() {
 		//ºÚµ•ΩÁ√Ê£∫
 		textView = new TextView(context);
 
@@ -53,6 +53,16 @@ public class FirstView  extends BaseView{
 	@Override
 	public int getId() {
 		return ConstantValue.VIEW_FIRST;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see com.lz.moblielottery.view.BaseView#setListener()
+	 */
+	@Override
+	protected void setListener() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

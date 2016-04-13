@@ -21,10 +21,10 @@ public class SecondView extends BaseView{
 	private TextView textView;
 	public SecondView(Context context) {
 		super(context);
-		init();
+		
 	}
 	
-	private void init() { 
+	protected void init() { 
 		//ºÚµ•ΩÁ√Ê£∫
 		textView = new TextView(context);
 
@@ -48,6 +48,15 @@ public class SecondView extends BaseView{
 	@Override
 	public int getId() {
 		return ConstantValue.VIEW_SECOND;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.lz.moblielottery.view.BaseView#setListener()
+	 */
+	@Override
+	protected void setListener() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
