@@ -3,10 +3,13 @@ package com.lz.moblielottery.service;
 import com.lz.moblielottery.Message;
 import com.lz.moblielottery.bean.User;
 
+
+
 public interface UserService {
-	
-	/*
-	 * ÓÃ»§µÇÂ½
-	 * */
+	/**
+	 * ç”¨æˆ·ç™»é™†
+	 * @param user
+	 * @return
+	 */
 	Message login(User user);
 }

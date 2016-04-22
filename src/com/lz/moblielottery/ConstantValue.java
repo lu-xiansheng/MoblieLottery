@@ -18,6 +18,10 @@ public interface ConstantValue {
 	 * 购彩大厅界面
 	 * */
 	int VIew_HALL = 10;
+	/*
+	 * 双色球选号界面
+	 */
+	int VIEW_SSQ = 20;
 	
 	String AGENTERID="1000002";//代理商的标识
 	String SOURCE="ivr";//xml文件的来源
@@ -36,4 +40,8 @@ public interface ConstantValue {
 	 * 彩票服务器连接
 	 */
 	String URL_LOTTERY = "http://10.0.2.2:8080/ZCWService/Entrance";
+	/**
+	 * 双色球的标识
+	 */
+	int SSQ = 118;
 }

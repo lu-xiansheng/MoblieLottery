@@ -91,7 +91,7 @@ public class TopManager implements Observer{
 			@Override
 			public void onClick(View v) {
 				Log.i(TAG,"点击了帮助按钮");
-				UIManager.getInstance().changeView(SecondView.class);
+				UIManager.getInstance().changeView(SecondView.class, null);
 				
 			} 
 		});
@@ -100,7 +100,7 @@ public class TopManager implements Observer{
 			 
 			@Override
 			public void onClick(View v) {
-				UIManager.getInstance().changeView(SecondView.class);
+				UIManager.getInstance().changeView(SecondView.class, null);
 				Log.i(TAG,"点击了注册按钮");
 			} 
 		});

@@ -7,9 +7,14 @@ import org.xmlpull.v1.XmlSerializer;
 
 import android.util.Xml;
 
+/**
+ * 灏佽鐨刴essage
+ * @author Administrator
+ *
+ */
 public class Message {
-	private Header header = new Header();//头
-	private Body body = new Body();//体
+	private Header header=new Header();//澶?
+	private Body body=new Body();//浣?
 	public Header getHeader() {
 		return header;
 	}
@@ -17,12 +22,42 @@ public class Message {
 		return body;
 	}
 	
-	/*返回现阶段处理后的xml
-	 * 获取指定请求的xml（登陆请求）*/
-	public String getXml(Element element) {    
+	public void serializer(XmlSerializer serializer)
+	{
+		//搴忓垪鍖栨牴鑺傜偣
 		try {
-			XmlSerializer serializer = Xml.newSerializer();
-			StringWriter writer = new StringWriter();
+			serializer.startTag(null, "message");
+			serializer.attribute(null,"version", "1.0");
+			//宸茬粡娣诲姞浜嗚姹?
+			Element element = body.getElements().get(0);
+			//璇锋眰鐨勬爣绀猴紙鍞竴鏍囧畾涓?涓姹傦級
+			String transactiontype = element.getTransactiontype();
+			
+			header.getTransactiontype().setTagValue(transactiontype);
+			header.serializer(serializer,body.getBody());
+			
+			serializer.startTag(null, "body");
+			serializer.text(body.getDESBody());
+			serializer.endTag(null, "body");
+			
+			
+			serializer.endTag(null, "message");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 杩斿洖鐜伴樁娈靛鐞嗗悗鐨剎ml
+	 * 鑾峰彇鎸囧畾璇锋眰鐨剎ml锛堢櫥闄嗚姹傦級
+	 * @return
+	 */
+	public String getXml(Element element)
+	{
+		XmlSerializer serializer=Xml.newSerializer();
+		StringWriter writer=new StringWriter();
+		try {
 			serializer.setOutput(writer);
 			serializer.startDocument("utf-8", null);
 			
@@ -32,34 +67,9 @@ public class Message {
 			serializer.endDocument();
 			
 			return writer.toString();
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "";
 	}
-	
-	public void serializer(XmlSerializer serializer) {
-		
-		//序列化根节点
-		try {
-			serializer.startTag(null, "message");
-			serializer.attribute(null, "version", "1.0");
-			
-			Element element = body.getElements().get(0);
-			//请求的表示（唯一的标定一个请求）
-			header.getTransactiontype().setTagValue(element.getTransactiontype());
-			
-			header.serializer(serializer,body.getBody());
-			serializer.startTag(null, "body");
-			serializer.text(body.getDESBoy());
-			serializer.endTag(null, "body");
-			
-			serializer.endTag(null, "message");
-		} catch (Exception e) {
-			
-			e.printStackTrace();
-		}
-	}
-	
-	
 }

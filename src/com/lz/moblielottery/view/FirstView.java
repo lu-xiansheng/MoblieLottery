@@ -5,6 +5,7 @@ import com.lz.moblielottery.ConstantValue;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
@@ -20,8 +21,8 @@ public class FirstView  extends BaseView{
 	
 	private TextView textView;
 	
-	public FirstView(Context context) {
-		super(context);
+	public FirstView(Context context,Bundle bundle) {
+		super(context, bundle);
 		//init();
 	}
 

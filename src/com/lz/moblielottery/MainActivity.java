@@ -17,6 +17,8 @@ import com.lz.moblielottery.view.manager.UIManager;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.hardware.usb.UsbConstants;
+import android.hardware.usb.UsbManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -75,13 +77,13 @@ public class MainActivity extends Activity {
 		
 		/*FirstView child = new FirstView(this);
 		middleContainer.addView(child.getView());*/
-		UIManager.getInstance().changeView(Hall.class);
+		UIManager.getInstance().changeView(Hall.class, null);
 		
 		/*if(!NetUtil.checkNet(this)) {
 			PromotManager.showNoNetWork(this);
 		}*/
 		
-		BaseView.setMyHandler(handler);
+		BaseView.setHandler(handler);
 		/*handler.sendEmptyMessageDelayed(0,2000); */ 
 	}
 
@@ -101,5 +103,4 @@ public class MainActivity extends Activity {
 		return super.onKeyDown(keyCode, event);
 	}
 
-	
 }

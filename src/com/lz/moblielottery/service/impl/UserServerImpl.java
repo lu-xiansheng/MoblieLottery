@@ -33,7 +33,7 @@ public class UserServerImpl extends BaseService implements UserService{
 			//第二次解析（解析内容是body信息）
 			XmlPullParser parser = Xml.newPullParser();	
 			try {
-				parser.setInput(new StringReader(result.getBody().getMd5info()));
+				parser.setInput(new StringReader(result.getBody().getBodyInfo()));
 				 
 				int eventType = parser.getEventType();
 				while(eventType != XmlPullParser.END_DOCUMENT) {
@@ -65,6 +65,8 @@ public class UserServerImpl extends BaseService implements UserService{
 		return result;
 		
 	}
+
+	
 }
 	/*
 	 * 

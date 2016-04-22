@@ -8,86 +8,111 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.xmlpull.v1.XmlSerializer;
 
+
+
+
 import com.lz.moblielottery.utill.DES;
 
 import android.util.Xml;
 
+/**
+ * body閮ㄥ垎灏佽
+ * 
+ * @author Administrator
+ * 
+ */
 public class Body {
-	//这是一个集合
+	// elements:缁撳悎锛堣姹傚唴瀹癸級
 	private List<Element> elements = new ArrayList<Element>();
 	private Oelement oelement = new Oelement();
 	
-	private String desBody;//存储服务器返回的des加密后的信息
-	private String md5info;//解密之后的信息
+	
+	private String desBody;//瀛樺偍鏈嶅姟鍣ㄨ繑鍥炵殑des鍔犲瘑鍚庣殑淇℃伅
+	
+	private String bodyInfo;//body閮ㄥ垎瑙ｅ瘑涔嬪悗鐨勪俊鎭?
 	
 	
 	
-	public String getMd5info() {
-		return md5info;
+
+	public String getBodyInfo() {
+		return bodyInfo;
 	}
-	public void setMd5info(String md5info) {
-		this.md5info = md5info;
+
+	public void setBodyInfo(String bodyInfo) {
+		this.bodyInfo = bodyInfo;
 	}
+
 	public String getDesBody() {
 		return desBody;
 	}
+
 	public void setDesBody(String desBody) {
 		this.desBody = desBody;
 	}
-	public Oelement getOelement() {
-		return oelement;
-	}
-	public void setOelement(Oelement oelement) {
-		this.oelement = oelement;
-	}
+
 	public List<Element> getElements() {
 		return elements;
 	}
+
+	public Oelement getOelement() {
+		return oelement;
+	}
+
+	public void setOelement(Oelement oelement) {
+		this.oelement = oelement;
+	}
+
 	
 	public void serializer(XmlSerializer serializer) {
 		try {
 			serializer.startTag(null, "body");
 			serializer.startTag(null, "elements");
-			
-			//处理请求（只是调用了基类里面的方法）
-			for(Element element:elements) {
+			// 澶勭悊璇锋眰锛堣皟鐢ㄤ簡璇锋眰鐨勫熀绫婚噷鐨勬柟娉曪級
+			for (Element element : elements) {
 				element.serializer(serializer);
 			}
-			
 			serializer.endTag(null, "elements");
 			serializer.endTag(null, "body");
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-/*	
- * 获取body部分的内容（包含body标签）
- * */
-	public String getBody() { 
+	/**
+	 * 鑾峰彇body閮ㄥ垎鐨勫唴瀹癸紙鍖呭惈body鏍囩锛?
+	 * @return
+	 */
+	public String getBody() {
 		XmlSerializer temp = Xml.newSerializer();
 		StringWriter writer = new StringWriter();
 		try {
 			temp.setOutput(writer);
+			// 娌℃湁鐢ㄥ埌鏂囨。鐨勫紑濮嬬殑鏂规硶
 			this.serializer(temp);
+			// 鏂囨。缁撴潫
 			temp.flush();
-			return writer.toString();       
+			return writer.toString();
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return "";
 	}
-	
-	/*获取<element>.....</element>的加密结果
-	 * 
-	 * */
-	public String getDESBoy() {
-		String bodyInfo = getBody();
+	/**
+	 * 鑾峰彇<elements>.....</elements>鐨凞ES鍔犲瘑鐨勭粨鏋?
+	 * @return
+	 */
+	public String getDESBody()
+	{
+		String bodyInfo=getBody();
 		
-		String elementInfo = StringUtils.substringBetween
-				(bodyInfo,"<body>","</body>");
-		DES des = new DES();
-		String authcode = des.authcode(elementInfo,"DECODE",ConstantValue.DES_PASSWORD);
+		String elemengsInfo = StringUtils.substringBetween(bodyInfo, "<body>", "</body>");
+		DES des=new DES();
+		
+		String authcode = des.authcode(elemengsInfo,"DECODE",ConstantValue.DES_PASSWORD);
+		
 		return authcode;
 	}
+
 }

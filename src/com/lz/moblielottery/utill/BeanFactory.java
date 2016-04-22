@@ -24,7 +24,7 @@ public class BeanFactory {
 		try {
 			T  t = (T) Class.forName(property).newInstance();
 			return t;
-		} catch (Exception e) {
+		} catch (Exception e) {  
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
